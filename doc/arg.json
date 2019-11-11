@@ -1,0 +1,26 @@
+{
+	"headerParameters": {},
+	"headers": {
+		"accept": "*/*",
+		"endpoint-timeout": "15",
+		"host": "service-9rx17sto-1252957949.ap-hongkong.apigateway.myqcloud.com",
+		"user-agent": "curl/7.61.1",
+		"x-anonymous-consumer": "true",
+		"x-qualifier": "$LATEST"
+	},
+	"httpMethod": "GET",
+	"path": "/douban",
+	"pathParameters": {},
+	"queryString": {
+	},
+	"queryStringParameters": {},
+	"requestContext": {
+		"httpMethod": "ANY",
+		"identity": {},
+		"path": "/douban",
+		"serviceId": "service-9rx17sto",
+		"sourceIp": "58.60.1.28",
+		"stage": "release"
+	}
+}
+

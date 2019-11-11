@@ -1,0 +1,52 @@
+Resources:
+  default:
+    Type: TencentCloud::Serverless::Namespace
+    douban:
+      Type: TencentCloud::Serverless::Function
+      Properties:
+        CodeUri: ./
+        Description: 豆瓣小组
+        Environment:
+          Variables:
+            SecretId: ''
+            SecretKey: ''
+            Bucket: 'ttt-1252957949'
+            Region: 'ap-hongkong'
+            Prefix: 'douban'
+            cos_url: "https://ttt-1252957949.cos.ap-hongkong.myqcloud.com/douban/douban.json"
+            host: "https://www.douban.com/group"
+        Handler: index1.main_handler
+        MemorySize: 128
+        Runtime: Nodejs8.9
+        Timeout: 3
+        #VpcConfig:
+        #    VpcId: 'vpc-qdqc5k2p'
+        #    SubnetId: 'subnet-pad6l61i'
+        Events:
+        #    timer:
+        #        Type: Timer
+        #        Properties:
+        #            CronExpression: '*/5 * * * *'
+        #            Enable: True
+        #    cli-appid.cos.ap-beijing.myqcloud.com: # full bucket name
+        #        Type: COS
+        #        Properties:
+        #            Bucket: cli-appid.cos.ap-beijing.myqcloud.com
+        #            Filter:
+        #                Prefix: filterdir/
+        #                Suffix: .jpg
+        #            Events: cos:ObjectCreated:*
+        #            Enable: True
+        #    topic:            # topic name
+        #        Type: CMQ
+        #        Properties:
+        #            Name: qname
+            douban_apigw:  # ${FunctionName} + '_apigw'
+                Type: APIGW
+                Properties:
+                    StageName: release
+                    HttpMethod: ANY
+
+Globals:
+  Function:
+    Timeout: 10
